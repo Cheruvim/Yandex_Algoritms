@@ -5,7 +5,7 @@ def start():
 
 
     startMirrorLeft = -1
-    currMirrirRight = 0
+    currMirrorRight = 0
     mirror = False
 
     if len(arr) == 1:
@@ -13,23 +13,27 @@ def start():
         return
 
     for i in range(len(arr)):
-        if i == len(arr) - currMirrirRight:
+        if arr[len(arr) - 1] == arr[i]:
+            for j in range(i, len(arr)):
+                if i == len(arr) - currMirrorRight - 1:
+                    break
+                if arr[j] == arr[len(arr) - currMirrorRight - 1]:
+                    if not mirror:
+                        startMirrorLeft = i
+
+                    mirror = True
+                    currMirrorRight += 1
+                else:
+                    currMirrorRight = 0
+                    startMirrorLeft = -1
+                    mirror = False
+                    break
+        if mirror:
             break
 
-        if arr[i] == arr[len(arr) - currMirrirRight - 1]:
-            if not mirror:
-                startMirrorLeft = i
-
-            mirror = True
-            currMirrirRight += 1
-        else:
-            currMirrirRight = 0
-            startMirrorLeft = -1
-            mirror = False
-
-    count = startMirrorLeft
-    print(count)
-    arrAd = []
+    if startMirrorLeft == -1:
+        startMirrorLeft = len(arr) - 1
+    print(startMirrorLeft)
     for i in range(startMirrorLeft-1, -1, -1):
         print(arr[i], end=" ")
 
