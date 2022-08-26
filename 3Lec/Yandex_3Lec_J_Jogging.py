@@ -8,10 +8,6 @@ def start():
         tempres = []
         for j in range(len(res)):
             for k in range(len(temp)):
-                if i == 0:
-                    if abs(temp[k][0] - 0) + abs(temp[k][1] - 0) <= t:
-                        if temp[k] not in tempres:
-                            tempres.append(temp[k])
                 if abs(temp[k][0] - res[j][0]) + abs(temp[k][1] - res[j][1]) <= t:
                     if temp[k] not in tempres:
                         tempres.append(temp[k])
